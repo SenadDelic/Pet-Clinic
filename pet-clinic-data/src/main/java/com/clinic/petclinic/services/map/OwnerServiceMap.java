@@ -1,11 +1,13 @@
 package com.clinic.petclinic.services.map;
 
 import com.clinic.petclinic.model.Owner;
-import com.clinic.petclinic.services.CRUDService;
+import com.clinic.petclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Integer> implements CRUDService<Owner, Integer> {
+@Service
+public class OwnerServiceMap extends AbstractMapService<Owner, Integer> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
@@ -28,6 +30,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Integer> implemen
 
     @Override
     public Owner save(Owner object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
     }
 }
