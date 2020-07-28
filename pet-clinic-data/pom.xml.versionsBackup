@@ -5,7 +5,7 @@
     <parent>
         <artifactId>pet-clinic</artifactId>
         <groupId>com.clinic</groupId>
-        <version>1.1-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,7 +15,6 @@
         <spring.boot.repackage.skip>true</spring.boot.repackage.skip>
         <start-class>com.clinic.petclinic.PetClinicApplication</start-class>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.h2database</groupId>
