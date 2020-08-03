@@ -12,6 +12,8 @@
     <artifactId>pet-clinic-web</artifactId>
 
     <properties>
+            <spring.boot.repackage.skip>true</spring.boot.repackage.skip>
+            <start-class>com.clinic.petclinic.PetClinicApplication</start-class>
 
         <!-- Web dependencies -->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
@@ -71,12 +73,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
+          <!--  <exclusions>
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions> -->
         </dependency>
     </dependencies>
 
