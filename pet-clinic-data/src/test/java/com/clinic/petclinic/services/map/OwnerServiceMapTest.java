@@ -41,13 +41,12 @@ class OwnerServiceMapTest {
     void deleteById() {
         ownerServiceMap.deleteById(1);
         assertEquals(0, ownerServiceMap.findAll().size());
-
     }
 
     @Test
     void findById() {
-        Owner findById = ownerServiceMap.findById(1);
-        assertEquals(1, findById.getId());
+        Owner findOwner = ownerServiceMap.findById(1);
+        assertEquals(1, findOwner.getId());
     }
 
     @Test

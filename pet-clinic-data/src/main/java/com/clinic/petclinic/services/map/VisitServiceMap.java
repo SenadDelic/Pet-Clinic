@@ -13,7 +13,7 @@ public class VisitServiceMap extends AbstractMapService<Visit, Integer> implemen
 
     @Override
     public Set<Visit> findAll() {
-        return null;
+        return super.findAll();
     }
 
     @Override
