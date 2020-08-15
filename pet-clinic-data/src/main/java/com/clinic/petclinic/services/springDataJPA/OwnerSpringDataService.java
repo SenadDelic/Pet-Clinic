@@ -33,7 +33,7 @@ public class OwnerSpringDataService implements OwnerService {
     @Override
     public Set<Owner> findAll() {
         Set<Owner> owners = new HashSet<>();
-        ownerRepository.findAll().forEach(e -> owners.add(e));
+        ownerRepository.findAll().forEach(owners::add);
         return owners;
     }
 

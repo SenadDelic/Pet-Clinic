@@ -21,7 +21,7 @@ public class PetTypeSpringDataService implements PetTypeService {
     @Override
     public Set<PetType> findAll() {
         Set<PetType> petTypes = new HashSet<>();
-        petTypeRepository.findAll().forEach(pet -> petTypes.add(pet));
+        petTypeRepository.findAll().forEach(petTypes::add);
         return petTypes;
     }
 

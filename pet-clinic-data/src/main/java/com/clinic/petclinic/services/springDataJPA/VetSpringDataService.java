@@ -21,7 +21,7 @@ public class VetSpringDataService implements VetService {
     @Override
     public Set<Vet> findAll() {
         Set<Vet> vets = new HashSet<>();
-        vetRepository.findAll().forEach(vet -> vets.add(vet));
+        vetRepository.findAll().forEach(vets::add);
         return vets;
     }
 
