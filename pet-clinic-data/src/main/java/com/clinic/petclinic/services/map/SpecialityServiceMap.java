@@ -1,7 +1,7 @@
 package com.clinic.petclinic.services.map;
 
-import com.clinic.petclinic.model.PetType;
-import com.clinic.petclinic.services.PetTypeService;
+import com.clinic.petclinic.model.Speciality;
+import com.clinic.petclinic.services.SpecialitiesService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +9,9 @@ import java.util.Set;
 
 @Service
 @Profile({"default", "map"})
-public class PetTypeServiceMap extends AbstractMapService<PetType, Integer> implements PetTypeService {
+public class SpecialityServiceMap extends AbstractMapService<Speciality, Integer> implements SpecialitiesService {
     @Override
-    public Set<PetType> findAll() {
+    public Set<Speciality> findAll() {
         return super.findAll();
     }
 
@@ -21,17 +21,17 @@ public class PetTypeServiceMap extends AbstractMapService<PetType, Integer> impl
     }
 
     @Override
-    public void delete(PetType object) {
+    public void delete(Speciality object) {
         super.delete(object);
     }
 
     @Override
-    public PetType save(PetType object) {
+    public Speciality save(Speciality object) {
         return super.save(object);
     }
 
     @Override
-    public PetType findById(Integer id) {
+    public Speciality findById(Integer id) {
         return super.findById(id);
     }
 }

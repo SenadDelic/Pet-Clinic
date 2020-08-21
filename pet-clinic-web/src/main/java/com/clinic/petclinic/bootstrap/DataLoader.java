@@ -1,12 +1,7 @@
 package com.clinic.petclinic.bootstrap;
 
-import com.clinic.petclinic.model.Owner;
-import com.clinic.petclinic.model.Pet;
-import com.clinic.petclinic.model.PetType;
-import com.clinic.petclinic.model.Vet;
-import com.clinic.petclinic.services.OwnerService;
-import com.clinic.petclinic.services.PetTypeService;
-import com.clinic.petclinic.services.VetService;
+import com.clinic.petclinic.model.*;
+import com.clinic.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,15 +12,26 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialitiesService specialitiesService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialitiesService specialitiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialitiesService = specialitiesService;
+        this.visitService = visitService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        //int count = petTypeService.findAll().size();
+        if (petTypeService.findAll().size() == 0)
+            loadData();
+    }
+
+    private void loadData() {
         PetType dog = new PetType();
         dog.setName("Dog");
         PetType saveDog = petTypeService.save(dog);
@@ -33,6 +39,18 @@ public class DataLoader implements CommandLineRunner {
         PetType cat = new PetType();
         cat.setName("Cat");
         PetType saveCat = petTypeService.save(cat);
+
+        Speciality radiology = new Speciality();
+        radiology.setDescription("Radiology");
+        Speciality saveRadiology = specialitiesService.save(radiology);
+
+        Speciality surgery = new Speciality();
+        surgery.setDescription("Surgery");
+        Speciality saveSurgery = specialitiesService.save(surgery);
+
+        Speciality dentist = new Speciality();
+        dentist.setDescription("Dentist");
+        Speciality saveDentist = specialitiesService.save(dentist);
 
         Owner owner = new Owner();
         owner.setFirstName("Micheal");
@@ -45,9 +63,9 @@ public class DataLoader implements CommandLineRunner {
         michaelPet.setPetType(saveDog);
         michaelPet.setOwner(owner);
         michaelPet.setBirthDay(LocalDate.now());
-        michaelPet.setName("Roki :3");
-
+        michaelPet.setName("Roki");
         owner.getPets().add(michaelPet);
+
         ownerService.save(owner);
 
         Owner owner1 = new Owner();
@@ -61,21 +79,30 @@ public class DataLoader implements CommandLineRunner {
         fionaPet.setPetType(saveCat);
         fionaPet.setOwner(owner);
         fionaPet.setBirthDay(LocalDate.now());
-        fionaPet.setName("Umjetnik :3");
-
+        fionaPet.setName("HorozCat");
         owner1.getPets().add(fionaPet);
+
         ownerService.save(owner1);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionaPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Cat to the doc");
+
+        visitService.save(catVisit);
 
         System.out.println("Loading owners");
 
         Vet vet = new Vet();
-        vet.setFirstName("Sam");
-        vet.setLastName("Axc");
+        vet.setFirstName("John");
+        vet.setLastName("Legend");
+        vet.getSpecialities().add(saveRadiology);
         vetService.save(vet);
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
-        vet1.setLastName("Axe deodorant :3");
+        vet1.setLastName("Smith");
+        vet1.getSpecialities().add(saveSurgery);
         vetService.save(vet1);
 
         System.out.println("Loading Vets....");

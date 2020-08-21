@@ -12,8 +12,8 @@
     <artifactId>pet-clinic-web</artifactId>
 
     <properties>
-            <spring.boot.repackage.skip>true</spring.boot.repackage.skip>
-            <start-class>com.clinic.petclinic.PetClinicApplication</start-class>
+        <spring.boot.repackage.skip>true</spring.boot.repackage.skip>
+        <start-class>com.clinic.petclinic.PetClinicApplication</start-class>
 
         <!-- Web dependencies -->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
@@ -41,6 +41,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+<!--
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -68,18 +77,41 @@
             <version>${webjars-bootstrap.version}</version>
         </dependency>
         <!-- end of webjars -->
-
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.6.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+           <version>3.3.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>2.3.2.RELEASE</version>
             <scope>test</scope>
-          <!--  <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions> -->
         </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -97,7 +129,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory
+                    </wroManagerFactory>
                     <cssDestinationFolder>${project.build.directory}/classes/static/resources/css</cssDestinationFolder>
                     <wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
                     <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
