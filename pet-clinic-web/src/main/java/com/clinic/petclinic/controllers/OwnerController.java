@@ -1,7 +1,6 @@
 package com.clinic.petclinic.controllers;
 
 import com.clinic.petclinic.model.Owner;
-import com.clinic.petclinic.model.Pet;
 import com.clinic.petclinic.services.OwnerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
