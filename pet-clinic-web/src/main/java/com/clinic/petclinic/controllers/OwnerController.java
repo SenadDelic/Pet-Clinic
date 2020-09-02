@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 //import javax.validation.Valid;
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/owners")
@@ -54,7 +55,7 @@ public class OwnerController {
         List<Owner> results = ownerService.findAllByLastNameLike(owner.getLastName() + "%");
 
         if (results.isEmpty()) {
-            bindingResult.rejectValue("lastName", "notFound", "not Found");
+            bindingResult.rejectValue("lastName", "notFound", "not found");
             return "owners/findOwners";
         } else if (results.size() == 1) {
             owner = results.get(0);
@@ -85,13 +86,12 @@ public class OwnerController {
     }
 
     @PostMapping("/new")
-    public String processCreationForm(Owner owner, BindingResult result) {
-        if (result.hasErrors())
+    public String processCreationForm(@Valid Owner owner, BindingResult result) {
+        if (result.hasErrors()) {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-        else {
-            // save owner
-            Owner saveOwner = ownerService.save(owner);
-            return "redirect:/owners/" + saveOwner.getId();
+        } else {
+            Owner savedOwner = ownerService.save(owner);
+            return "redirect:/owners/" + savedOwner.getId();
         }
     }
 
