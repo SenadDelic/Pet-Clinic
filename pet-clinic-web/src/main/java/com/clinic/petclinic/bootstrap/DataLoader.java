@@ -91,8 +91,6 @@ public class DataLoader implements CommandLineRunner {
 
         visitService.save(catVisit);
 
-        System.out.println("Loading owners");
-
         Vet vet = new Vet();
         vet.setFirstName("John");
         vet.setLastName("Legend");
@@ -104,7 +102,5 @@ public class DataLoader implements CommandLineRunner {
         vet1.setLastName("Smith");
         vet1.getSpecialities().add(saveSurgery);
         vetService.save(vet1);
-
-        System.out.println("Loading Vets....");
     }
 }
