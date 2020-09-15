@@ -17,6 +17,7 @@ import java.util.Map;
 
 @Controller
 public class VisitController {
+    public static final String CREATE_OR_UPDATE_VISIT_FORM = "pets/createOrUpdateVisitForm";
     private final VisitService visitService;
     private final PetService petService;
 
@@ -51,14 +52,14 @@ public class VisitController {
     // Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
     @GetMapping("/owners/*/pets/{petId}/visits/new")
     public String initNewVisitForm(@PathVariable("petId") Integer petId, Map<String, Object> model) {
-        return "pets/createOrUpdateVisitForm";
+        return CREATE_OR_UPDATE_VISIT_FORM;
     }
 
     // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
     @PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
     public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
         if (result.hasErrors())
-            return "pets/createOrUpdateVisitForm";
+            return CREATE_OR_UPDATE_VISIT_FORM;
         else {
             visitService.save(visit);
             return "redirect:/owners/{ownerId}";

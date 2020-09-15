@@ -21,14 +21,12 @@ public class VetController {
     @RequestMapping({"", "/vets/vet", "/vets/vet.html", "/vets.html"})
     public String listOfVets(Model model) {
         model.addAttribute("vets", vetService.findAll());
-
         return "vets/vet";
     }
 
     @GetMapping("/api/vets")
     public @ResponseBody
     Set<Vet> getVetsJson() {
-
         return vetService.findAll();
     }
 }

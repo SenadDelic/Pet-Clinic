@@ -20,6 +20,7 @@ import javax.validation.Valid;
 @RequestMapping("/owners/{ownerId}")
 public class PetController {
     public static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
+    public static final String REDIRECT_OWNERS = "redirect:/owners/";
 
     private final PetService petService;
     private final OwnerService ownerService;
@@ -67,7 +68,7 @@ public class PetController {
         } else {
             pet.setOwner(owner);
             petService.save(pet);
-            return "redirect:/owners/" + owner.getId();
+            return REDIRECT_OWNERS + owner.getId();
         }
     }
 
@@ -87,7 +88,7 @@ public class PetController {
             owner.getPets().add(pet);
             pet.setOwner(owner);
             petService.save(pet);
-            return "redirect:/owners/" + owner.getId();
+            return REDIRECT_OWNERS + owner.getId();
         }
     }
 }

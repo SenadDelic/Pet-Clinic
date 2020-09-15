@@ -25,7 +25,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args){
         //int count = petTypeService.findAll().size();
         if (petTypeService.findAll().size() == 0)
             loadData();

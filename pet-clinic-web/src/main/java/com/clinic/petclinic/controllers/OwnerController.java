@@ -18,6 +18,8 @@ import java.util.List;
 @Controller
 public class OwnerController {
     private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
+    public static final String FIND_OWNERS = "owners/findOwners";
+    public static final String REDIRECT_OWNERS = "redirect:/owners/";
     private final OwnerService ownerService;
 
     public OwnerController(OwnerService ownerService) {
@@ -36,7 +38,7 @@ public class OwnerController {
     @RequestMapping({"/find", "/find.html"})
     public String findOwners(Model model) {
         model.addAttribute("owner", Owner.builder().build());
-        return "owners/findOwners";
+        return FIND_OWNERS;
     }
 
     @RequestMapping()
@@ -49,10 +51,10 @@ public class OwnerController {
 
         if (results.isEmpty()) {
             bindingResult.rejectValue("lastName", "notFound", "not found");
-            return "owners/findOwners";
+            return FIND_OWNERS;
         } else if (results.size() == 1) {
             owner = results.get(0);
-            return "redirect:/owners/" + owner.getId();
+            return REDIRECT_OWNERS + owner.getId();
         } else {
             model.addAttribute("selections", results);
             return "owners/ownersList";
@@ -84,7 +86,7 @@ public class OwnerController {
             return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
         } else {
             Owner savedOwner = ownerService.save(owner);
-            return "redirect:/owners/" + savedOwner.getId();
+            return REDIRECT_OWNERS + savedOwner.getId();
         }
     }
 
@@ -101,7 +103,7 @@ public class OwnerController {
         else {
             owner.setId(ownerId);
             Owner saveOwner = ownerService.save(owner);
-            return "redirect:/owners/" + saveOwner.getId();
+            return REDIRECT_OWNERS + saveOwner.getId();
         }
     }
 }
