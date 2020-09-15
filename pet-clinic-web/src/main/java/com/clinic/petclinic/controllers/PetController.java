@@ -19,8 +19,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/owners/{ownerId}")
 public class PetController {
-    public static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
-    public static final String REDIRECT_OWNERS = "redirect:/owners/";
+    private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
+    private static final String REDIRECT_OWNERS = "redirect:/owners/";
 
     private final PetService petService;
     private final OwnerService ownerService;

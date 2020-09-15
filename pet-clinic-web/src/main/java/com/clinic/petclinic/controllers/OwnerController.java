@@ -18,8 +18,8 @@ import java.util.List;
 @Controller
 public class OwnerController {
     private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
-    public static final String FIND_OWNERS = "owners/findOwners";
-    public static final String REDIRECT_OWNERS = "redirect:/owners/";
+    private static final String FIND_OWNERS = "owners/findOwners";
+    private static final String REDIRECT_OWNERS = "redirect:/owners/";
     private final OwnerService ownerService;
 
     public OwnerController(OwnerService ownerService) {

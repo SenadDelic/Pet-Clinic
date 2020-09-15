@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Controller
 public class VisitController {
-    public static final String CREATE_OR_UPDATE_VISIT_FORM = "pets/createOrUpdateVisitForm";
+    private static final String CREATE_OR_UPDATE_VISIT_FORM = "pets/createOrUpdateVisitForm";
     private final VisitService visitService;
     private final PetService petService;
 
